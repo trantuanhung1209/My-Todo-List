@@ -11,6 +11,7 @@
 
 * {
     box-sizing: border-box;
+
 }
 
 body {
@@ -40,7 +41,6 @@ body {
 
 @media (max-width: 575.98px) {
     .container {
-        width: 100%;
         padding-left: 16px;
         padding-right: 16px;
 
@@ -60,6 +60,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 575.98px) {
+    .header {
+        overflow-x: hidden;
+    }
 }
 
 /*End header */
