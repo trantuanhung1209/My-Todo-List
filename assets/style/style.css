@@ -29,6 +29,7 @@ body {
 .header {
     padding: 80px 0;
     background-color: var(--background-color);
+    overflow-x: hidden;
 }
 
 .header .inner-wrap {
@@ -327,14 +328,14 @@ body {
     width: 40%;
     padding: 25px;
     border-radius: 8px;
-    background-color: rgba(8, 73, 97, 0.573);
+    background-color: rgba(8, 73, 97, 0.673);
     z-index: 99;
     position: relative;
 }
 
 .modal-content {
     font-size: 16px;
-    color: var(--color-purple);
+    color: #cccdff;
 }
 
 .modal-close {
@@ -348,13 +349,13 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    background-color: #1E6F9F;
+    background-color: #3b95c8;
     font-size: 16px;
     cursor: pointer;
 }
 
 .modal-close:hover i {
-    color: var(--color-purple);
+    color: #cccdff;
 }
 
 .modal-overlay {
@@ -400,3 +401,15 @@ body {
     background-color: #611715;
 }
 /* show confirm */
+
+/* show edit */
+.modal input {
+    display: block;
+    padding: 10px 28px;
+    background-color: #262626;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    color: #F2F2F2;
+}
+/* End show edit */
