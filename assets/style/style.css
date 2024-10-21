@@ -18,7 +18,6 @@ body {
     margin: 0;
     font-family: var(--font-main);
     background-color: #1a1a1a;
-    overflow-x: hidden;
 }
 
 .container {
@@ -41,22 +40,21 @@ body {
 
 @media (max-width: 575.98px) {
     .container {
+        width: 100%;
         padding-left: 16px;
         padding-right: 16px;
-
     }
 }
-
 /* End container */
 
 /* header */
 .header {
     padding: 80px 0;
     background-color: var(--background-color);
-    overflow-x: hidden;
 }
 
 .header .inner-wrap {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +62,7 @@ body {
 
 @media (max-width: 575.98px) {
     .header {
-        overflow-x: hidden;
+        width: 100%;
     }
 }
 
@@ -72,18 +70,18 @@ body {
 
 /* section-1 */
 .section-1 {
-    margin: -24px;
+    margin: -24px 0 0 0;
     padding: 0 0 64px 0;
 }
 
-.inner-form {
+.section-1 .inner-form {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
 }
 
-.inner-form input {
+.section-1 .inner-form input {
     flex: 1;
     padding: 16px;
     border: 1px solid #0D0D0D;
@@ -94,11 +92,11 @@ body {
     color: #F2F2F2;
 }
 
-.inner-form input::placeholder {
+.section-1 .inner-form input::placeholder {
     color: #808080;
 }
 
-.inner-button {
+.section-1 .inner-button {
     padding: 16px;
     font-weight: 700;
     font-size: 14px;
@@ -111,11 +109,11 @@ body {
     cursor: pointer;
 }
 
-.inner-button i {
+.section-1 .inner-button i {
     font-size: 16px;
 }
 
-.inner-button:hover {
+.section-1 .inner-button:hover {
     background-color: var(--color-blue);
 }
 
@@ -132,13 +130,13 @@ body {
     gap: 24px;
 }
 
-.inner-describe-list {
+.section-2 .inner-describe-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.inner-describe-list .inner-quantity-done {
+.section-2 .inner-describe-list .inner-quantity-done {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -147,7 +145,7 @@ body {
     color: var(--color-purple);
 }
 
-.inner-describe-list .inner-quantity-works {
+.section-2 .inner-describe-list .inner-quantity-works {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -156,8 +154,8 @@ body {
     color: var(--color-blue);
 }
 
-.inner-describe-list .inner-quantity-done .inner-number-tag,
-.inner-describe-list .inner-quantity-works .inner-number-tag {
+.section-2 .inner-describe-list .inner-quantity-done .inner-number-tag,
+.section-2 .inner-describe-list .inner-quantity-works .inner-number-tag {
     padding: 2px 8px;
     background-color: #333333;
     border-radius: 999px;
@@ -181,7 +179,7 @@ body {
     justify-content: space-between;
 }
 
-.inner-checkbox {
+.section-2 .inner-checkbox {
     display: block;
     position: relative;
     padding-left: 35px;
@@ -193,7 +191,7 @@ body {
     user-select: none;
 }
 
-.inner-checkbox input {
+.section-2 .inner-checkbox input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -201,7 +199,7 @@ body {
     width: 0;
 }
 
-.inner-checkbox .checkmark {
+.section-2 .inner-checkbox .checkmark {
     position: absolute;
     top: 0;
     left: 0;
@@ -211,28 +209,28 @@ body {
     border-radius: 50%;
 }
 
-.inner-checkbox:hover input~.checkmark {
+.section-2 .inner-checkbox:hover input~.checkmark {
     background-color: #1E6F9F;
 }
 
-.inner-checkbox input:checked~.checkmark {
+.section-2 .inner-checkbox input:checked~.checkmark {
     background-color: #2196F3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
-.checkmark::after {
+.section-2 .checkmark::after {
     content: "";
     position: absolute;
     display: none;
 }
 
 /* Show the indicator (dot/circle) when checked */
-.inner-checkbox input:checked~.checkmark::after {
+.section-2 .inner-checkbox input:checked~.checkmark::after {
     display: block;
 }
 
 /* Style the checkmark/indicator */
-.inner-checkbox .checkmark::after {
+.section-2 .inner-checkbox .checkmark::after {
     left: 4px;
     top: 1px;
     width: 4px;
