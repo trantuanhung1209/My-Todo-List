@@ -25,6 +25,30 @@ body {
     margin: 0 auto;
 }
 
+@media (max-width: 991.98px) {
+    .container {
+        width: 720px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .container {
+        width: 540px;
+
+    }
+}
+
+@media (max-width: 575.98px) {
+    .container {
+        width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+
+    }
+}
+
+/* End container */
+
 /* header */
 .header {
     padding: 80px 0;
@@ -45,6 +69,7 @@ body {
     margin: -24px;
     padding: 0 0 64px 0;
 }
+
 .inner-form {
     display: flex;
     justify-content: center;
@@ -180,11 +205,11 @@ body {
     border-radius: 50%;
 }
 
-.inner-checkbox:hover input ~ .checkmark {
+.inner-checkbox:hover input~.checkmark {
     background-color: #1E6F9F;
 }
 
-.inner-checkbox input:checked ~ .checkmark {
+.inner-checkbox input:checked~.checkmark {
     background-color: #2196F3;
 }
 
@@ -196,7 +221,7 @@ body {
 }
 
 /* Show the indicator (dot/circle) when checked */
-.inner-checkbox input:checked ~ .checkmark::after {
+.inner-checkbox input:checked~.checkmark::after {
     display: block;
 }
 
@@ -261,6 +286,7 @@ body {
     color: #808080;
     cursor: pointer;
 }
+
 /* End section-2 */
 
 /* alert */
@@ -309,6 +335,7 @@ body {
 .alert--hidden {
     display: none;
 }
+
 /*End alert */
 .modal {
     position: fixed;
@@ -400,6 +427,7 @@ body {
 .button-close:hover {
     background-color: #611715;
 }
+
 /* show confirm */
 
 /* show edit */
@@ -412,4 +440,5 @@ body {
     border: none;
     color: #F2F2F2;
 }
+
 /* End show edit */
