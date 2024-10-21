@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="shortcut icon" href="assets/images/favicon-roket.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Todo</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="inner-wrap">
+                <img src="assets/images/Logo.svg" alt="">
+            </div>
+        </div>
+    </header>
+
+    <section class="section-1">
+        <div class="container">
+            <div class="inner-wrap">
+                <form class="inner-form">
+                    <input type="text" name="content" placeholder="Create your todo list..." id="input-create">
+                    <button type="submit" class="inner-button">
+                        Create
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-2">
+        <div class="container">
+            <div class="inner-wrap">
+                <div class="inner-describe-list">
+                    <div class="inner-quantity-works">
+                        Tasks
+                        <span class="inner-number-tag">0</span>
+                    </div>
+                    <div class="inner-quantity-done">
+                        Tasks accomplished
+                        <span class="inner-number-tag"><span class="task-number-complete">0</span> of <span class="quantity-of-task"></span></span>
+                    </div>
+                </div>
+
+                <div class="inner-todo-list"></div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --font-main: "Be Vietnam Pro", serif;
+    --color-blue-dark: #1E6F9F;
+    --color-blue: #4EA8DE;
+    --color-purple: #8284FA;
+    --color-secondary: #8284FA;
+    --background-color: #0D0D0D;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    background-color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 736px;
+    margin: 0 auto;
+}
+
+/* header */
+.header {
+    padding: 80px 0;
+    background-color: var(--background-color);
+}
+
+.header .inner-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*End header */
+
+/* section-1 */
+.section-1 {
+    margin: -24px;
+    padding: 0 0 64px 0;
+}
+.inner-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.inner-form input {
+    flex: 1;
+    padding: 16px;
+    border: 1px solid #0D0D0D;
+    background-color: #262626;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    color: #F2F2F2;
+}
+
+.inner-form input::placeholder {
+    color: #808080;
+}
+
+.inner-button {
+    padding: 16px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #F2F2F2;
+    background-color: var(--color-blue-dark);
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.inner-button i {
+    font-size: 16px;
+}
+
+.inner-button:hover {
+    background-color: var(--color-blue);
+}
+
+/* End section-1 */
+
+/* section-2 */
+.section-2 {
+    padding: 0 0 80px 0;
+}
+
+.section-2 .inner-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.inner-describe-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inner-describe-list .inner-quantity-done {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-purple);
+}
+
+.inner-describe-list .inner-quantity-works {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-blue);
+}
+
+.inner-describe-list .inner-quantity-done .inner-number-tag,
+.inner-describe-list .inner-quantity-works .inner-number-tag {
+    padding: 2px 8px;
+    background-color: #333333;
+    border-radius: 999px;
+    color: white;
+}
+
+.section-2 .inner-todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section-2 .inner-todo-list .inner-todo-list-item {
+    display: flex;
+    padding: 16px;
+    border: 1px solid #333333;
+    box-shadow: 0px 2px 8px 0px #0000000F;
+    background: #262626;
+    border-radius: 8px;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.inner-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.inner-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.inner-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--color-blue);
+    border-radius: 50%;
+}
+
+.inner-checkbox:hover input ~ .checkmark {
+    background-color: #1E6F9F;
+}
+
+.inner-checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.inner-checkbox input:checked ~ .checkmark::after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.inner-checkbox .checkmark::after {
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.section-2 .inner-todo-list .inner-todo-list-item .inner-content {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+.section-2 .inner-task-action {
+    display: flex;
+    gap: 12px;
+    align-items: start;
+}
+
+.section-2 .inner-todo-list .inner-todo-list-item .inner-delete {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    color: #808080;
+    cursor: pointer;
+}
+
+.section-2 .inner-todo-list .inner-todo-list-item .inner-edit {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    color: #808080;
+    cursor: pointer;
+}
+
+.section-2 .inner-todo-list-item.todo-item--complete {
+    background-color: #259dff;
+}
+
+.section-2 .item-list--undo {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    position: relative;
+    top: 2px;
+    left: -30px;
+}
+
+.section-2 .item-list--undo i {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    color: #808080;
+    cursor: pointer;
+}
+/* End section-2 */
