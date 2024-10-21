@@ -261,3 +261,142 @@ body {
     cursor: pointer;
 }
 /* End section-2 */
+
+/* alert */
+.alert-list {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alert {
+    background-color: #808080;
+    width: 250px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #5e9ec3;
+}
+
+.alert--success {
+    background-color: rgba(8, 73, 97, 0.573);
+}
+
+.alert--error {
+    background-color: #61171590;
+}
+
+.alert-content {
+    font-size: 16px;
+}
+
+.alert-close {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.alert-close:hover {
+    color: #4EA8DE;
+}
+
+.alert--hidden {
+    display: none;
+}
+/*End alert */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    padding: 25px;
+    border-radius: 8px;
+    background-color: rgba(8, 73, 97, 0.573);
+    z-index: 99;
+    position: relative;
+}
+
+.modal-content {
+    font-size: 16px;
+    color: var(--color-purple);
+}
+
+.modal-close {
+    position: absolute;
+    top: -16px;
+    right: -10px;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1E6F9F;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-close:hover i {
+    color: var(--color-purple);
+}
+
+.modal-overlay {
+    background-color: #0000004f;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.inner-button-modal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.button-agree {
+    padding: 5px 12px;
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--color-blue-dark);
+    color: white;
+    cursor: pointer;
+}
+
+.button-agree:hover {
+    background-color: #259dff;
+}
+
+.button-close {
+    padding: 5px 12px;
+    border: 0;
+    border-radius: 8px;
+    background-color: #61171590;
+    color: white;
+    cursor: pointer;
+}
+
+.button-close:hover {
+    background-color: #611715;
+}
+/* show confirm */
