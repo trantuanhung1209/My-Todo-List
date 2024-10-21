@@ -364,6 +364,14 @@ body {
     position: relative;
 }
 
+@media (max-width: 575.98px) {
+    .modal-main {
+        width: 60%;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
 .modal-content {
     font-size: 16px;
     color: #cccdff;
@@ -406,6 +414,12 @@ body {
     gap: 8px;
 }
 
+@media (max-width: 575.98px) {
+    .inner-button-modal {
+        gap: 90%;
+    }
+}
+
 .button-agree {
     padding: 5px 12px;
     border: 0;
@@ -444,5 +458,9 @@ body {
     border: none;
     color: #F2F2F2;
 }
-
+@media (max-width: 575.98px) {
+    .modal input {
+        flex: 1;
+    }
+}
 /* End show edit */
