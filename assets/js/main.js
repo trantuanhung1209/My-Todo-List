@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getDatabase, ref, push, set, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
 
 const firebaseConfig = {
@@ -18,17 +19,25 @@ const db = getDatabase();
 const todosRef = ref(db, 'todos');
 
 let countTaskComplete = 0;
-
-//Update task
 const updateQuantityTask = () => {
     // Checked
     const checkMark = document.querySelectorAll(".inner-checkbox .checkmark");
     const inputCheck = document.querySelectorAll(".inner-checkbox input");
-    const taskNumberNcomplete = document.querySelector(".task-number-complete");
+    const taskNumberComplete = document.querySelector(".task-number-complete");
 
     let quantityOfTask = inputCheck.length;
-    document.querySelector(".inner-number-tag").textContent = `${quantityOfTask}`;
-    document.querySelector(".quantity-of-task").textContent = `${quantityOfTask}`;
+
+    // Check if the elements exist before modifying their text content
+    const innerNumberTag = document.querySelector(".inner-number-tag");
+    const quantityOfTaskElement = document.querySelector(".quantity-of-task");
+
+    if (innerNumberTag) {
+        innerNumberTag.textContent = `${quantityOfTask}`;
+    }
+
+    if (quantityOfTaskElement) {
+        quantityOfTaskElement.textContent = `${quantityOfTask}`;
+    }
 
     checkMark.forEach((item) => {
         item.addEventListener("click", () => {
@@ -45,12 +54,14 @@ const updateQuantityTask = () => {
     });
     // End Checked
 }
-//End Update task
+
 
 //update task complete
 function UpdateQuantityTaskComplete(count) {
     const taskNumberComplete = document.querySelector(".task-number-complete");
-    taskNumberComplete.textContent = `${count}`;
+    if(taskNumberComplete) {
+        taskNumberComplete.textContent = `${count}`;
+    }
 }
 //End update task complete
 
@@ -210,7 +221,9 @@ if (innerForm) {
 
             const newTodosRef = push(todosRef);
             set(newTodosRef, data).then(() => {
-                showAlert("Create success!", 3000);
+                if(contentTask != "") {
+                    showAlert("Create success!", 3000);
+                }
             });
 
             innerForm.content.value = "";
