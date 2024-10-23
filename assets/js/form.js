@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getDatabase, ref, push, set, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
 
 const firebaseConfig = {
@@ -17,6 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 // show alert
 const showAlert = (content = null, time = 3000, typeAlert = null) => {
@@ -84,7 +85,7 @@ if (formRegister) {
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    showAlert("Email is existed",5000,"alert--error");
+                    showAlert("Email is existed", 5000, "alert--error");
                 });
         }
     })
@@ -111,7 +112,7 @@ if (formLogin) {
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    showAlert("Email and password invalid!",5000,"alert--error");
+                    showAlert("Email and password invalid!", 5000, "alert--error");
                 });
         }
     })
@@ -125,7 +126,7 @@ if (buttonLogout) {
         signOut(auth).then(() => {
             window.location.href = "form.html";
         }).catch((error) => {
-            showAlert("Logout unsuccessful!",5000,"alert--success");
+            showAlert("Logout unsuccessful!", 5000, "alert--success");
         });
     })
 }
@@ -136,10 +137,15 @@ const buttonLogin = document.querySelector("[button-login]");
 const buttonRegister = document.querySelector("[button-register]");
 const section2 = document.querySelector(".section-2");
 const innerForm = document.querySelector(".inner-form");
+const headerUser = document.querySelector(".header-user");
+const headerWrap = document.querySelector("[header-wrap ");
 if (buttonLogin && buttonRegister) {
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            const uid = user.uid;
+            if(headerUser) {
+                headerUser.style.display = "inline-flex";
+                headerUser.innerHTML = `Hello, ${user.email} `;
+            }
             buttonLogout.style.display = "inline-block";
             section2.style.display = "block";
 
@@ -147,15 +153,61 @@ if (buttonLogin && buttonRegister) {
             buttonLogin.style.display = "inline-block";
             buttonRegister.style.display = "inline-block";
             section2.remove();
+            
+            if(headerWrap) {
+                headerWrap.style.justifyContent = "center";
+            }
 
-            if(innerForm) {
+            if (innerForm) {
                 const inputCreate = innerForm.querySelector("#input-create");
                 inputCreate.disabled = true;
                 innerForm.addEventListener("submit", () => {
-                    showAlert("You must login to create task!" ,5000,"alert--error");
+                    showAlert("You must login to create task!", 5000, "alert--error");
                 })
             }
         }
     });
 }
 // End Get the currently signed-in user
+
+
+// login with google
+const buttonGoogle = document.querySelector("[button-google]");
+if (buttonGoogle) {
+    buttonGoogle.addEventListener("click", (event) => {
+        event.preventDefault();
+        console.log("hihi")
+        const provider = new GoogleAuthProvider();
+
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                window.location.href = "index.html";
+            }).catch((error) => {
+                showAlert("Unsuccessfully login with google", 5000, "alert--error");
+            });
+    })
+}
+//end login with google
+
+// Forgot password
+const formForgotPassword = document.querySelector("#form-forgot-password");
+if (formForgotPassword) {
+    formForgotPassword.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const email = formForgotPassword.email.value;
+
+        if (email) {
+            var actionCodeSettings = {
+                url: `http://127.0.0.1:5501/form.html`
+            };
+            sendPasswordResetEmail(auth, email, actionCodeSettings)
+                .then(() => {
+                    showAlert("Successfully send email",5000,"alert--success");
+                })
+                .catch((error) => {
+                    showAlert("Unsuccessfully send email",5000,"alert--error");
+                });
+        }
+    })
+}
+// End forgot password

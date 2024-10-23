@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getDatabase, ref, push, set, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
 
 const firebaseConfig = {
@@ -17,6 +17,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const todosRef = ref(db, 'todos');
+const auth = getAuth();
+
+// get user id
+let currentUser = null;
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        currentUser = user;
+    } else {
+        // User is signed out
+        // ...
+    }
+});
+// End get user id
 
 let countTaskComplete = 0;
 const updateQuantityTask = () => {
@@ -59,7 +72,7 @@ const updateQuantityTask = () => {
 //update task complete
 function UpdateQuantityTaskComplete(count) {
     const taskNumberComplete = document.querySelector(".task-number-complete");
-    if(taskNumberComplete) {
+    if (taskNumberComplete) {
         taskNumberComplete.textContent = `${count}`;
     }
 }
@@ -216,12 +229,13 @@ if (innerForm) {
         if (contentTask) {
             const data = {
                 content: contentTask,
-                complete: false
+                complete: false,
+                uid: currentUser.uid
             };
 
             const newTodosRef = push(todosRef);
             set(newTodosRef, data).then(() => {
-                if(contentTask != "") {
+                if (contentTask != "") {
                     showAlert("Create success!", 3000);
                 }
             });
@@ -236,6 +250,7 @@ if (innerForm) {
 const innerTodoList = document.querySelector(".inner-todo-list");
 if (innerTodoList) {
     onValue(todosRef, (items) => {
+
         const htmls = [];
         countTaskComplete = 0; // Reset countTaskComplete to count only completed tasks
 
@@ -268,7 +283,10 @@ if (innerTodoList) {
             </div>
             </div>
         </div>`;
-            htmls.push(html);
+
+            if(data.uid == currentUser.uid) {
+                htmls.push(html);
+            }
         });
 
         innerTodoList.innerHTML = htmls.reverse().join("");  // Tái tạo lại toàn bộ danh sách DOM
